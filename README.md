@@ -4,11 +4,11 @@ Scraping, procesamiento y predicción de productos de **seguridad electrónica**
 
 **Capstone Project · Samsung Innovation Campus 2026 · Comisión 1**
 
-| Integrante | Rol |
-|---|---|
-| Ramiro Spandrio | Business (líder del equipo) |
-| Helen Garcia | Solution Engineer |
-| Yamila Jordan | Data Scientist |
+| Integrante | Rol | Aporte principal |
+|---|---|---|
+| Ramiro Spandrio | Business (líder del equipo) | Problema de negocio, métrica y precio, dashboard, presentación y la **versión general multirrubro** (actor general, modelo general y EDA en PDF) |
+| Helen Garcia | Solution Engineer | Scraping en Apify, actor de inferencia y flujo de Make |
+| Yamila Jordan | Data Scientist | ETL, EDA, comparación de modelos y modelo final en el Colab |
 
 ---
 
@@ -146,7 +146,7 @@ Comparamos 6 modelos de scikit-learn sobre la misma partición (validación cruz
 
 **Score de costo-beneficio (0 a 100):** es un dato más del análisis competitivo, no la métrica de negocio. Pondera precio relativo a la categoría (35 %), rating (30 %), cantidad de reseñas (20 %) y promociones: cuotas sin interés y envío gratis (15 %). Un producto con 65 o más se marca como competitivo (50,1 % del mercado).
 
-**Métrica del modelo:** (ej. Random Forest / XGBoost para predecir alta rotación): accuracy en test 0,917 y F1 0,83.**.
+**Métrica del modelo:** accuracy en test **0,917** y F1 **0,83**.
 
 ---
 
@@ -175,4 +175,4 @@ Comparamos 6 modelos de scikit-learn sobre la misma partición (validación cruz
 
 ## Versión multirrubro
 
-Como nos sugirieron, el mismo enfoque sirve para cualquier rubro. `actor_general/` recibe el nombre del rubro y sus búsquedas, o un CSV crudo, y usa variables relativas a cada categoría: el precio contra la mediana de su categoría y las reseñas contra las de su categoría. Así el mismo modelo se puede aplicar sin reentrenar. Además del CSV con las predicciones, genera el EDA en PDF (`docs/eda_reporte_actor_general.pdf`) y el dataset limpio.
+Desarrollada por Ramiro Spandrio. Como nos sugirieron, el mismo enfoque sirve para cualquier rubro. `actor_general/` recibe el nombre del rubro y sus búsquedas, o un CSV crudo, y usa variables relativas a cada categoría: el precio contra la mediana de su categoría y las reseñas contra las de su categoría. Así el mismo modelo se puede aplicar sin reentrenar. Además del CSV con las predicciones, genera el EDA en PDF (`docs/eda_reporte_actor_general.pdf`) y el dataset limpio.
