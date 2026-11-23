@@ -54,7 +54,7 @@ Como usamos Make, el ETL y el EDA están **encapsulados dentro del actor**. Make
 ```
 metis-capstone/
 ├── actor_apify/                  # Actor de inferencia que usa Make (Python)
-│   ├── my_actor/main.py          #   ETL + EDA + inferencia
+│   ├── my_actor/                 #   main.py (actor), etl.py, eda.py, modelo.py
 │   ├── model/                    #   modelo entrenado (.pickle)
 │   ├── .actor/                   #   actor.json, input/output/dataset schema
 │   ├── Dockerfile
@@ -79,7 +79,7 @@ metis-capstone/
 
 | | |
 |---|---|
-| **Código** | `actor_apify/my_actor/main.py` |
+| **Código** | `actor_apify/my_actor/`: `main.py` (actor), `etl.py`, `eda.py` y `modelo.py` |
 | **Input** | `actor_apify/.actor/input_schema.json` → `csv_url` |
 | **Output** | `actor_apify/.actor/output_schema.json` y `dataset_schema.json` |
 | **Modelo** | `actor_apify/model/modelo_seguridad_capstone.pickle` (entrenado en el Colab) |
@@ -91,13 +91,15 @@ El actor **no entrena** el modelo: lo carga ya entrenado y solo predice. Tampoco
 
 ## 4. Funciones de ETL, EDA y modelo
 
-| Función | Input | Output | Descripción |
-|---|---|---|---|
-| `preparar_para_modelo()` | CSV crudo del scraper | DataFrame limpio | Saca duplicados, convierte precios, calcula descuento, cuotas sin interés, envío gratis, tienda oficial, combo, categoría y marca |
-| Filtro de precios | DataFrame limpio | DataFrame filtrado | Descarta precios vacíos o fuera de $5.000 – $2.000.000 |
-| `resumen_eda()` | DataFrame filtrado | `EDA_RESUMEN.json` | Total de productos, precio promedio por marca, publicaciones por categoría, precio y rating por categoría |
-| `cargar_modelo()` | `model/*.pickle` | pipeline de scikit-learn | Carga el modelo exportado desde el Colab |
-| `pipeline.predict()` | 10 features | `prediccion` (0/1) | Predice si el producto tiene alta rotación |
+El código está separado por responsabilidad: `main.py` solo maneja el actor (input, salidas y logs) y la lógica vive en módulos aparte.
+
+| Archivo | Función | Input | Output | Descripción |
+|---|---|---|---|---|
+| `etl.py` | `preparar_para_modelo()` | CSV crudo del scraper | DataFrame limpio | Saca duplicados, convierte precios, calcula descuento, cuotas sin interés, envío gratis, tienda oficial, combo, categoría y marca |
+| `etl.py` | `filtrar_precios()` | DataFrame limpio | DataFrame filtrado | Descarta precios vacíos o fuera de $5.000 – $2.000.000 |
+| `eda.py` | `resumen_eda()` | DataFrame filtrado | `EDA_RESUMEN.json` | Total de productos, precio promedio por marca, publicaciones por categoría, precio y rating por categoría |
+| `modelo.py` | `cargar_modelo()` | `model/*.pickle` | pipeline de scikit-learn | Carga el modelo exportado desde el Colab |
+| `modelo.py` | `predecir()` | 10 features | `prediccion` (0/1) | Predice si el producto tiene alta rotación |
 
 **Target:** `vende_mucho` = 1 si los vendidos del producto superan la mediana de su categoría. Balance: 27,6 % alta rotación / 72,4 % estándar. Los vendidos **no entran** al modelo, para evitar leakage.
 
