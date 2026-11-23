@@ -4,11 +4,11 @@ Scraping, procesamiento y predicción de productos de **seguridad electrónica**
 
 **Capstone Project · Samsung Innovation Campus 2026 · Comisión 1**
 
-| Integrante | Rol |
-|---|---|
-| Ramiro Spandrio | Business (líder del equipo) |
-| Helen Garcia | Solution Engineer |
-| Yamila Jordan | Data Scientist |
+| Integrante | Rol | Aporte principal |
+|---|---|---|
+| Ramiro Spandrio | Business (líder del equipo) | Problema de negocio, métricas, dashboard, precio, presentación y la versión multirrubro (actor y modelo general) |
+| Helen Garcia | Solution Engineer | Scraping en Apify, actor de inferencia y flujo de Make |
+| Yamila Jordan | Data Scientist | ETL, EDA, score de costo-beneficio, comparación de modelos y modelo final |
 
 ---
 
