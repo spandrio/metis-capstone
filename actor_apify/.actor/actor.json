@@ -1,0 +1,19 @@
+{
+  "$schema": "https://apify.com/schemas/v1/actor.ide.json",
+  "actorSpecification": 1,
+  "name": "metis-inferencia-seguridad",
+  "title": "Metis · Inferencia de alta rotación (seguridad electrónica)",
+  "description": "Recibe el CSV crudo del scraper de Mercado Libre, aplica ETL, genera un resumen de EDA y predice qué productos tienen alta rotación.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-empty",
+    "generatedBy": "Equipo Metis"
+  },
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "dockerfile": "../Dockerfile"
+}

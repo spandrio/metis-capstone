@@ -1,0 +1,14 @@
+{
+  "title": "Inferencia Metis",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "csv_url": {
+      "title": "URL del CSV crudo",
+      "type": "string",
+      "description": "Link de descarga directa del CSV que viene de Drive (salida del scraper de Mercado Libre)",
+      "editor": "textfield"
+    }
+  },
+  "required": ["csv_url"]
+}

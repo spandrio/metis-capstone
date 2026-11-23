@@ -1,0 +1,29 @@
+{
+  "$schema": "https://apify.com/schemas/v1/dataset.ide.json",
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "properties": {
+      "title": {"type": "string"},
+      "marca": {"type": "string"},
+      "categoria": {"type": "string"},
+      "precio": {"type": "number"},
+      "precio_anterior": {"type": "number"},
+      "descuento_pct": {"type": "number"},
+      "cuotas_sin_interes": {"type": "integer"},
+      "envio_gratis": {"type": "integer"},
+      "tienda_oficial": {"type": "integer"},
+      "es_combo": {"type": "integer"},
+      "rating": {"type": "number"},
+      "cantidad_resenas": {"type": "integer"},
+      "prediccion": {"type": "integer"}
+    }
+  },
+  "views": {
+    "resultados": {
+      "title": "Predicciones",
+      "transformation": {"fields": ["title", "marca", "categoria", "precio", "descuento_pct", "rating", "cantidad_resenas", "prediccion"]},
+      "display": {"component": "table"}
+    }
+  }
+}
