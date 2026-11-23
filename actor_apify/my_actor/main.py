@@ -9,89 +9,12 @@ Flujo de una corrida:
 
 El actor NO entrena el modelo: solo lo carga y predice. Tampoco guarda datos propios.
 """
-import os
-import pickle
-import urllib.request
-from pathlib import Path
-
-import numpy as np
 import pandas as pd
 from apify import Actor
 
-MODELO_LOCAL = Path(__file__).resolve().parents[1] / "model" / "modelo_seguridad_capstone.pickle"
-
-MAPA_CATEGORIAS = {
-    "MLA-SURVEILLANCE_CAMERAS": "Cámara / Kit CCTV",
-    "MLA-HOME_ALARMS_AND_SENSORS": "Alarma Inteligente",
-    "MLA-ELECTRIC_LOCKS": "Cerradura Digital",
-    "MLA-DOOR_AND_WINDOW_LOCKS": "Cerradura Digital",
-    "MLA-ELECTRIC_ENTRANCE_INTERCOMS": "Portero Visor",
-    "MLA-ELECTRONIC_ACCESSORIES_AND_REPLACEMENTS": "Accesorios CCTV",
-    "MLA-ALARM_REMOTE_CONTROLS": "Accesorios Alarma",
-    "MLA-GAS_DETECTORS": "Alarma Inteligente",
-}
-PATRON_COMBO = r"\b(?:combo|kit|pack|piezas|pzas|set)\b|\bx\s?\d+\b|\b\d+\s?x\b"
-PRECIO_MIN, PRECIO_MAX = 5_000, 2_000_000
-# Mismas marcas "genéricas" que se unificaron en el Colab al entrenar
-MARCAS_GENERICAS = {
-    "", "nan", "none", ",", "! ! !", "no", "na", "other", "general", "generic", "generica", "genérica",
-    "generico", "genérico", "generel", "nobrand", "neutral", "full", "kit", "camara", "cámaras",
-    "cerradura electrónica inteligente", "smart lock",
-}
-
-
-def _a_binario(serie: pd.Series) -> pd.Series:
-    return serie.astype(str).str.lower().isin(["true", "1", "1.0"]).astype(int)
-
-
-def preparar_para_modelo(df_raw: pd.DataFrame) -> pd.DataFrame:
-    """ETL: transforma el CSV crudo del scraper a las columnas que usa el modelo."""
-    df = df_raw.drop_duplicates("itemId" if "itemId" in df_raw else None).copy()
-
-    # Si ya viene limpio (ej. dataset_seguridad_limpio.csv), no se vuelve a mapear
-    if "price" not in df.columns and "precio" in df.columns:
-        return df
-
-    df["precio"] = pd.to_numeric(df["price"], errors="coerce")
-    df["precio_anterior"] = pd.to_numeric(df["originalPrice"], errors="coerce").fillna(df["precio"])
-    df["precio_anterior"] = np.maximum(df["precio_anterior"], df["precio"])
-    df["descuento_pct"] = np.where(
-        df["precio_anterior"] > df["precio"],
-        np.round((df["precio_anterior"] - df["precio"]) / df["precio_anterior"] * 100, 2),
-        0.0,
-    )
-    df["cuotas_sin_interes"] = _a_binario(df.get("installments/interestFree", pd.Series(False, index=df.index)))
-    df["envio_gratis"] = _a_binario(df["freeShipping"])
-    df["tienda_oficial"] = _a_binario(df["isOfficialStore"])
-    df["es_combo"] = df["title"].astype(str).str.lower().str.contains(PATRON_COMBO, regex=True, na=False).astype(int)
-    df["rating"] = pd.to_numeric(df["rating"], errors="coerce").fillna(4.7)
-    df["cantidad_resenas"] = pd.to_numeric(df["ratingCount"], errors="coerce").fillna(0).astype(int)
-    df["categoria"] = df["domainId"].map(MAPA_CATEGORIAS).fillna("Otros")
-    marca = df["brand"].fillna("Genérica").astype(str).str.strip()
-    df["marca"] = np.where(marca.str.lower().isin(MARCAS_GENERICAS), "Genérica", marca.str.title())
-    return df
-
-
-def resumen_eda(df: pd.DataFrame) -> dict:
-    """EDA encapsulado: las preguntas de negocio que responde la presentación."""
-    return {
-        "total_productos_limpios": int(len(df)),
-        "precio_promedio_por_marca": df.groupby("marca")["precio"].mean().round(2).to_dict(),
-        "publicaciones_por_categoria": df["categoria"].value_counts().to_dict(),
-        "precio_y_rating_promedio_por_categoria": df.groupby("categoria")[["precio", "rating"]].mean().round(2).to_dict(),
-    }
-
-
-def cargar_modelo() -> dict:
-    """Carga el modelo entrenado en el Colab. Por defecto usa el pickle incluido en model/.
-    Si se define la variable de entorno MODEL_URL, lo descarga de ahí (ej. key-value store de Apify)."""
-    url = os.environ.get("MODEL_URL")
-    ruta = MODELO_LOCAL
-    if url:
-        ruta = Path("modelo.pickle")
-        urllib.request.urlretrieve(url, ruta)
-    with open(ruta, "rb") as f:
-        return pickle.load(f)
+from .eda import resumen_eda
+from .etl import filtrar_precios, preparar_para_modelo
+from .modelo import cargar_modelo, predecir
 
 
 async def main() -> None:
@@ -104,17 +27,14 @@ async def main() -> None:
 
         # 2. ETL
         df_raw = pd.read_csv(csv_url)
-        df = preparar_para_modelo(df_raw)
-        df = df.dropna(subset=["precio"])
-        df = df[(df["precio"] >= PRECIO_MIN) & (df["precio"] <= PRECIO_MAX)].copy()
+        df = filtrar_precios(preparar_para_modelo(df_raw))
         Actor.log.info(f"ETL: {len(df_raw)} filas crudas → {len(df)} filas limpias")
 
         # 3. EDA
         await Actor.set_value("EDA_RESUMEN.json", resumen_eda(df))
 
         # 4. Inferencia con el modelo ya entrenado
-        artefacto = cargar_modelo()
-        df["prediccion"] = artefacto["pipeline"].predict(df[artefacto["features"]])
+        df["prediccion"] = predecir(df, cargar_modelo())
 
         # 5. Salida
         await Actor.push_data(df.where(df.notna(), None).to_dict(orient="records"))
