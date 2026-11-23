@@ -1,0 +1,10 @@
+{
+  "actorSpecification": 1,
+  "name": "metis-inteligencia-competitiva",
+  "title": "Metis · Inteligencia competitiva (cualquier rubro)",
+  "description": "Analiza publicaciones de Mercado Libre de cualquier rubro: métrica de negocio, score de costo-beneficio y probabilidad de alta rotación.",
+  "version": "1.0",
+  "input": "./input_schema.json",
+  "storages": { "dataset": "./dataset_schema.json" },
+  "dockerfile": "../Dockerfile"
+}

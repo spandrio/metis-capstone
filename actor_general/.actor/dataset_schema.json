@@ -1,0 +1,22 @@
+{
+  "actorSpecification": 1,
+  "fields": {},
+  "views": {
+    "resultados": {
+      "title": "Resultados por publicación",
+      "transformation": { "fields": ["rubro", "categoria", "titulo", "marca", "precio", "distancia_precio_prom_pct", "banda_precio", "score_costo_beneficio", "prob_vende_mucho", "pred_vende_mucho", "url"] },
+      "display": {
+        "component": "table",
+        "properties": {
+          "precio": { "label": "Precio", "format": "number" },
+          "distancia_precio_prom_pct": { "label": "Distancia al promedio (%)", "format": "number" },
+          "banda_precio": { "label": "Banda de precio" },
+          "score_costo_beneficio": { "label": "Score costo-beneficio", "format": "number" },
+          "prob_vende_mucho": { "label": "Prob. alta rotación", "format": "number" },
+          "pred_vende_mucho": { "label": "Alta rotación (1/0)", "format": "number" },
+          "url": { "label": "Publicación", "format": "link" }
+        }
+      }
+    }
+  }
+}

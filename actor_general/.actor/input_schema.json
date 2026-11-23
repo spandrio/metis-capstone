@@ -1,0 +1,16 @@
+{
+  "title": "Metis · entrada",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "rubro": { "title": "Rubro", "type": "string", "editor": "textfield", "description": "Nombre del rubro a analizar.", "prefill": "Seguridad electrónica" },
+    "modo": { "title": "Modo", "type": "string", "editor": "select", "enum": ["busqueda", "archivo"], "enumTitles": ["Buscar en Mercado Libre", "Analizar un CSV crudo"], "default": "busqueda", "description": "Buscar publicaciones ahora o analizar un CSV que ya existe (por ejemplo, el que manda Make desde Drive)." },
+    "busquedas": { "title": "Búsquedas", "type": "array", "editor": "stringList", "description": "Palabras clave del rubro, una por línea.", "prefill": ["camara de seguridad wifi", "kit camaras cctv", "kit alarma inteligente hogar", "cerraduras inteligentes"] },
+    "max_por_busqueda": { "title": "Máximo de publicaciones por búsqueda", "type": "integer", "minimum": 10, "maximum": 1000, "default": 300 },
+    "archivo_csv_url": { "title": "CSV crudo (solo modo archivo)", "type": "string", "editor": "textfield", "description": "Link de descarga del CSV (sirve un link de Google Drive compartido)." },
+    "scraper_actor": { "title": "Actor scraper", "type": "string", "editor": "textfield", "default": "sourabhbgp/mercadolibre-scraper", "sectionCaption": "Avanzado" },
+    "scraper_input": { "title": "Entrada base del scraper", "type": "object", "editor": "json", "default": { "mode": "search", "country": "AR" }, "description": "Configuración del scraper. Se le agrega la búsqueda y el máximo." },
+    "campo_busqueda": { "title": "Campo de búsqueda del scraper", "type": "string", "editor": "textfield", "default": "searchQuery" }
+  },
+  "required": ["rubro"]
+}
