@@ -1,0 +1,6 @@
+apify==4.3.0
+requests>=2.31
+pandas==2.2.3
+numpy==2.4.6
+scikit-learn==1.6.1
+matplotlib==3.9.2
