@@ -146,7 +146,7 @@ Comparamos 6 modelos de scikit-learn sobre la misma partición (validación cruz
 
 **Score de costo-beneficio (0 a 100):** es un dato más del análisis competitivo, no la métrica de negocio. Pondera precio relativo a la categoría (35 %), rating (30 %), cantidad de reseñas (20 %) y promociones: cuotas sin interés y envío gratis (15 %). Un producto con 65 o más se marca como competitivo (50,1 % del mercado).
 
-**Métrica del modelo:** accuracy en test **0,917** y F1 **0,83**.
+**Métrica del modelo:** (ej. Random Forest / XGBoost para predecir alta rotación): accuracy en test 0,917 y F1 0,83.**.
 
 ---
 
