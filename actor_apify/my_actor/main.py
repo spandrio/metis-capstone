@@ -9,6 +9,8 @@ Flujo de una corrida:
 
 El actor NO entrena el modelo: solo lo carga y predice. Tampoco guarda datos propios.
 """
+import json
+
 import pandas as pd
 from apify import Actor
 
@@ -37,6 +39,6 @@ async def main() -> None:
         df["prediccion"] = predecir(df, cargar_modelo())
 
         # 5. Salida
-        await Actor.push_data(df.where(df.notna(), None).to_dict(orient="records"))
+        await Actor.push_data(json.loads(df.to_json(orient="records", force_ascii=False)))  # NaN → null
         await Actor.set_value("OUTPUT.csv", df.to_csv(index=False), content_type="text/csv")
         Actor.log.info(f"Listo: {int(df['prediccion'].sum())} de {len(df)} productos con alta rotación predicha")
