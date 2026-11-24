@@ -12,6 +12,7 @@ Todo el ETL y el EDA corren adentro del actor (requisito para el flujo con Make)
 from __future__ import annotations
 
 import io
+import json
 import pickle
 from pathlib import Path
 
@@ -105,7 +106,7 @@ async def main() -> None:
 
         # ---------- Salida ----------
         salida = df[COLUMNAS_SALIDA]
-        await Actor.push_data(salida.where(salida.notna(), None).to_dict(orient="records"))
+        await Actor.push_data(json.loads(salida.to_json(orient="records", force_ascii=False)))  # NaN → null
         kpis = resumen(df)
         await Actor.set_value("RESUMEN", kpis)
         await Actor.set_value("RESULTADOS_CSV", salida.to_csv(index=False), content_type="text/csv")
