@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metis Analytics · Inteligencia competitiva para Mercado Libre</title>
+<meta name="description" content="Cada semana relevamos a tu competencia en Mercado Libre, comparamos cada precio con su categoría y predecimos qué se va a vender. Vos recibís la decisión lista.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230E1A3A'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='36' text-anchor='middle' fill='%23F6F3EC'%3Em%3C/text%3E%3Ccircle cx='50' cy='42' r='5' fill='%23F28C28'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="intro" aria-hidden="true">
+  <div class="logo-grande"><span>m</span><span>e</span><span>t</span><span>i</span><span>s</span><span><b>.</b></span></div>
+  <small>Analytics</small>
+</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="marca" href="#hero"><b>metis<i>.</i></b><small>analytics</small></a>
+    <ul>
+      <li><a href="#como">Cómo funciona</a></li>
+      <li><a href="#demo">Probalo</a></li>
+      <li><a href="#numeros">Números</a></li>
+      <li><a href="#calculadora">Ahorro</a></li>
+      <li><a href="#planes">Planes</a></li>
+    </ul>
+    <a class="btn prim" href="#contacto">Pedí tu piloto <span class="flecha">→</span></a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="flota" id="flota"></div>
+  <div class="sticker" data-sticker="etiqueta" style="width:118px;left:7%;top:20%;transform:rotate(-12deg)"></div>
+  <div class="sticker" data-sticker="rayo" style="width:96px;right:9%;top:17%;transform:rotate(10deg)"></div>
+  <div class="sticker" data-sticker="grafico" style="width:124px;right:14%;bottom:22%;transform:rotate(-6deg)"></div>
+  <div class="wrap hero-in">
+    <span class="tag" style="background:rgba(242,140,40,.18);color:#FFC58C"><i></i>Inteligencia competitiva · Mercado Libre</span>
+    <h1 style="margin-top:26px">
+      <span class="lin"><span>Llegá <em class="s">antes</em></span></span>
+      <span class="lin"><span>que tu competencia.</span></span>
+    </h1>
+    <p class="lead">Cada semana relevamos a tu competencia en Mercado Libre, comparamos cada precio con su categoría y predecimos qué se va a vender. <b>Vos recibís la decisión lista: qué vender, a qué precio y cuándo promocionar.</b></p>
+    <div class="hero-cta">
+      <a class="btn prim" href="#demo">Probalo con datos reales <span class="flecha">→</span></a>
+      <a class="btn sec" href="#como">Cómo funciona</a>
+    </div>
+  </div>
+  <div class="ticker"><div class="pista" id="ticker"></div></div>
+</header>
+
+<!-- ================= KINETIC ================= -->
+<section id="kinetic">
+  <div class="pin">
+    <svg class="trazo" id="trazo1" width="260" height="140" viewBox="0 0 260 140" style="left:8%;top:14%"><path d="M8 120 C 60 10, 160 10, 190 70 S 250 120, 240 40" fill="none" stroke="#111A33" stroke-width="3" stroke-linecap="round" stroke-dasharray="420" stroke-dashoffset="420"/><path d="M228 52 l12 -14 l6 18" fill="none" stroke="#111A33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0"/></svg>
+    <div class="sticker" data-sticker="lupa" style="width:120px;right:9%;top:16%;transform:rotate(8deg);opacity:0" id="kinStk1"></div>
+    <div class="sticker" data-sticker="carrito" style="width:110px;left:10%;bottom:16%;transform:rotate(-8deg);opacity:0" id="kinStk2"></div>
+    <div class="kin-line" data-kin>qué vender,</div>
+    <div class="kin-line serif" data-kin>a qué precio</div>
+    <div class="kin-line" data-kin>y cuándo.</div>
+    <p id="kinP">Los comercios ponen sus precios a ojo: revisan a mano cientos de publicaciones, los datos se vencen en una semana y llegan tarde a las promociones. Metis mira el mercado por vos.</p>
+  </div>
+</section>
+
+<!-- ================= PROBLEMA ================= -->
+<section class="bloque" id="problema">
+  <div class="wrap">
+    <span class="tag rev"><i></i>El problema</span>
+    <h2 class="titulo rev">Relevar a mano te hace <em class="s">llegar tarde.</em></h2>
+    <div class="grid">
+      <div class="contador rev">
+        <div class="num"><span data-cuenta="12">0</span><small>horas</small></div>
+        <p>por semana pierde un equipo comercial de 3 personas mirando precios de la competencia a mano. Cuando termina, los precios ya cambiaron.</p>
+        <div class="equiv">
+          <div><b><span data-cuenta="52">0</span> h</b><span>por mes</span></div>
+          <div><b>US$ <span data-cuenta="222">0</span></b><span>de sueldo por mes, sin cargas</span></div>
+        </div>
+      </div>
+      <div class="cita rev">
+        <div class="sticker" data-sticker="estrella" style="width:70px;right:-18px;top:-26px;transform:rotate(14deg)"></div>
+        <blockquote>Pierdo ventas porque llego tarde. Quiero saber antes que mi competencia qué vender, a qué precio y cuándo promocionar.</blockquote>
+        <div class="quien"><div class="avatar">DO</div><div><b>Diana Osorio</b><span>Vértice Comercial · 4 canales de venta</span></div></div>
+      </div>
+    </div>
+    <div class="dolores">
+      <div class="dolor rev"><div class="ico" style="background:#E2EBFF">⏱</div><h3>Relevamiento manual</h3><p>Cientos de publicaciones revisadas una por una y copiadas a una planilla.</p></div>
+      <div class="dolor rev"><div class="ico" style="background:#FFE6CC">⌛</div><h3>Datos que se vencen</h3><p>Precios, cuotas y promociones de la competencia cambian todas las semanas.</p></div>
+      <div class="dolor rev"><div class="ico" style="background:#E9F8D2">🎯</div><h3>Decisiones a ojo</h3><p>Precio, stock y combos se definen por intuición, sin saber cómo está el mercado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CÓMO FUNCIONA ================= -->
+<section class="bloque" id="como">
+  <div class="wrap">
+    <span class="tag rev" style="background:rgba(242,140,40,.18);color:#FFC58C"><i></i>Cómo funciona</span>
+    <h2 class="titulo rev">Vos no tocás nada. <em class="s">El análisis te llega solo.</em></h2>
+    <p class="bajada rev">Un sistema automático que corre cada semana: junta los datos, los limpia, los analiza, predice y te manda el resultado.</p>
+    <div class="flujo rev">
+      <svg viewBox="0 0 1120 150" id="flujoSvg" aria-label="Mercado Libre, Apify, Make, actor Metis y tu mail">
+        <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="rgba(255,255,255,.45)"/></marker></defs>
+        <g fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-dasharray="7 7" class="lineas-flujo">
+          <path id="fp0" d="M196 75H262" marker-end="url(#fl)"/><path id="fp1" d="M420 75H486" marker-end="url(#fl)"/><path id="fp2" d="M644 75H710" marker-end="url(#fl)"/><path id="fp3" d="M868 75H934" marker-end="url(#fl)"/>
+        </g>
+        <g class="nodos" font-family="Space Grotesk, sans-serif" text-anchor="middle">
+          <g><rect x="38" y="35" width="158" height="80" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)"/><text x="117" y="70" fill="#fff" font-size="18" font-weight="700">Mercado Libre</text><text x="117" y="94" fill="#AEB8D3" font-size="13" font-family="Inter">publicaciones</text></g>
+          <g><rect x="262" y="35" width="158" height="80" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)"/><text x="341" y="70" fill="#fff" font-size="18" font-weight="700">Apify</text><text x="341" y="94" fill="#AEB8D3" font-size="13" font-family="Inter">scraper</text></g>
+          <g><rect x="486" y="35" width="158" height="80" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)"/><text x="565" y="70" fill="#fff" font-size="18" font-weight="700">Make</text><text x="565" y="94" fill="#AEB8D3" font-size="13" font-family="Inter">orquesta</text></g>
+          <g><rect x="710" y="35" width="158" height="80" rx="18" fill="rgba(242,140,40,.18)" stroke="#F28C28" stroke-width="2"/><text x="789" y="70" fill="#fff" font-size="18" font-weight="700">Actor Metis</text><text x="789" y="94" fill="#FFC58C" font-size="13" font-family="Inter">ETL · EDA · modelo</text></g>
+          <g><rect x="934" y="35" width="158" height="80" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)"/><text x="1013" y="70" fill="#fff" font-size="18" font-weight="700">Tu mail</text><text x="1013" y="94" fill="#AEB8D3" font-size="13" font-family="Inter">y tablero</text></g>
+        </g>
+        <g id="puntos"></g>
+      </svg>
+    </div>
+    <div class="pasos">
+      <div class="paso rev"><span class="n">01</span><h4>Relevamos</h4><p>Las publicaciones de tu competencia en Mercado Libre, en las búsquedas de tu rubro.</p></div>
+      <div class="paso rev"><span class="n">02</span><h4>Limpiamos</h4><p>Sacamos duplicados y precios absurdos, unificamos marcas y detectamos combos.</p></div>
+      <div class="paso rev"><span class="n">03</span><h4>Comparamos</h4><p>Cada precio contra el promedio de su categoría, con un score de costo-beneficio.</p></div>
+      <div class="paso rev"><span class="n">04</span><h4>Predecimos</h4><p>Un modelo de machine learning marca qué productos van a rotar.</p></div>
+      <div class="paso rev"><span class="n">05</span><h4>Te avisamos</h4><p>El reporte llega a tu mail cada semana, listo para decidir.</p></div>
+    </div>
+    <div class="mail-mock" id="mailMock">
+      <div class="barra"><i></i><i></i><i></i></div>
+      <div class="cab"><b>Tu semana en Mercado Libre · Seguridad para el hogar</b><p>De: Metis Analytics · Reporte semanal · 1.088 publicaciones analizadas</p></div>
+      <div class="cuerpo" id="mailFilas"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO ================= -->
+<section class="bloque" id="demo">
+  <div class="wrap">
+    <span class="tag rev"><i></i>Probalo · datos reales del 18/11/2026</span>
+    <h2 class="titulo rev">Jugá con <em class="s">tu mercado.</em></h2>
+    <p class="bajada rev">Todo lo que ves corre en tu navegador con los datos y el modelo reales de Metis: 1.088 publicaciones de cámaras, alarmas y cerraduras.</p>
+    <div class="tabs rev" role="tablist">
+      <button class="tab on" data-tab="caro">¿Estás caro o barato?</button>
+      <button class="tab" data-tab="modelo">Probá el modelo</button>
+      <button class="tab" data-tab="oport">Oportunidades</button>
+      <button class="tab" data-tab="mapa">Mapa del mercado</button>
+    </div>
+
+    <div class="panel on" id="p-caro">
+      <div class="dos">
+        <div>
+          <div class="campo"><label>Categoría</label><div class="chips" id="catCaro"></div></div>
+          <div class="campo"><label>Tu precio <span>en pesos</span></label><div class="input-precio">$<input id="precioCaro" inputmode="numeric" value="189.999"></div></div>
+          <div class="campo"><input type="range" id="sliderCaro" min="0" max="1000" value="500" aria-label="Ajustar precio"></div>
+        </div>
+        <div class="resultado">
+          <div class="veredicto" id="verCaro">—</div>
+          <p class="bajada" id="txtCaro" style="font-size:16px"></p>
+          <div class="regla">
+            <div class="zonas"><div style="flex:80;background:#BFD3FF"></div><div style="flex:20;background:#FFC58C"></div><div style="flex:80;background:#FFC9D5"></div></div>
+            <div class="aguja" id="agujaCaro"><b id="agujaTxt">0 %</b></div>
+          </div>
+          <div class="regla-ejes"><span>−90 % · más barato</span><span>promedio</span><span>+90 % · más caro</span></div>
+          <div class="datos3">
+            <div><b id="d1">—</b><span>precio promedio de la categoría</span></div>
+            <div><b id="d2">—</b><span>del mercado está más barato que vos</span></div>
+            <div><b id="d3">—</b><span>rota mucho en tu banda de precio</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-modelo">
+      <div class="dos">
+        <div>
+          <div class="campo"><label>Categoría</label><div class="chips" id="catMod"></div></div>
+          <div class="campo"><label>Precio <span id="lPrecio"></span></label><input type="range" id="mPrecio" min="0" max="1000" value="400"></div>
+          <div class="campo"><label>Descuento <span id="lDesc"></span></label><input type="range" id="mDesc" min="0" max="60" value="0"></div>
+          <div class="campo"><label>Rating <span id="lRat"></span></label><input type="range" id="mRat" min="0" max="50" value="46"></div>
+          <div class="campo"><label>Cantidad de reseñas <span id="lRes"></span></label><input type="range" id="mRes" min="0" max="100" value="30"></div>
+          <div class="toggles" id="mTog">
+            <div class="toggle on" data-k="envio">Envío gratis<span class="sw"></span></div>
+            <div class="toggle" data-k="cuotas">Cuotas sin interés<span class="sw"></span></div>
+            <div class="toggle" data-k="oficial">Tienda oficial<span class="sw"></span></div>
+            <div class="toggle" data-k="combo">Es combo o kit<span class="sw"></span></div>
+          </div>
+        </div>
+        <div class="resultado" style="text-align:center">
+          <div class="anillo">
+            <svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="104" fill="none" stroke="#E6E0D3" stroke-width="18"/><circle id="aro" cx="120" cy="120" r="104" fill="none" stroke="#F28C28" stroke-width="18" stroke-linecap="round" stroke-dasharray="653.5" stroke-dashoffset="653.5" style="transition:stroke-dashoffset .8s cubic-bezier(.2,.8,.2,1),stroke .4s"/></svg>
+            <div><div class="v" id="probV">0<small>%</small></div><div class="l">probabilidad de<br>alta rotación</div></div>
+          </div>
+          <div class="veredicto" id="verMod" style="font-size:32px">—</div>
+          <p class="nota">Modelo general de Metis: Random Forest de 200 árboles con variables relativas a cada categoría. Validación cruzada 0,893 y test 0,931 en el modelo general. Es una estimación: la confirmamos con tus ventas en el piloto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-oport">
+      <div class="filtros">
+        <div class="chips" id="catOp"></div>
+        <select id="ordenOp" aria-label="Ordenar">
+          <option value="prob">Más probable que rote</option>
+          <option value="score">Mejor costo-beneficio</option>
+          <option value="dist">Más barato vs su categoría</option>
+        </select>
+      </div>
+      <div class="cards" id="cardsOp"></div>
+      <div class="mas"><button class="btn sec" id="masOp">Ver más oportunidades</button></div>
+    </div>
+
+    <div class="panel" id="p-mapa">
+      <div class="veredicto" style="font-size:30px">Solo el <em class="s">7,1 %</em> del mercado está cerca del precio promedio de su categoría.</div>
+      <p class="bajada" style="font-size:16px">Cada punto es una publicación. A la izquierda, más barata que su categoría; arriba, mejor costo-beneficio. Pasá el mouse para ver cuál es.</p>
+      <svg id="scatter" viewBox="0 0 1060 460"></svg>
+      <div class="leyenda"><span><i style="background:#3D63D6"></i>Más de 10 % abajo del promedio</span><span><i style="background:#F28C28"></i>Dentro de ±10 %</span><span><i style="background:#E0577D"></i>Más de 10 % arriba</span><span>Tamaño: probabilidad de alta rotación</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NÚMEROS ================= -->
+<section class="bloque" id="numeros" style="padding-top:40px">
+  <div class="wrap">
+    <span class="tag rev"><i></i>Transparencia</span>
+    <h2 class="titulo rev">Modelo y negocio, <em class="s">en números.</em></h2>
+    <p class="bajada rev">Primero la métrica de negocio, después la del modelo. Comparamos 6 modelos con validación cruzada de 5 folds y nos quedamos con el mejor.</p>
+    <div class="grid">
+      <div class="card-modelo rev">
+        <span class="sello">Datos verificables en GitHub</span>
+        <span class="tag" style="background:rgba(255,255,255,.12);color:#fff"><i></i>Random Forest · modelo de seguridad</span>
+        <div class="k">
+          <div><b class="acc" data-cuenta="0.918" data-dec="3">0</b><span>accuracy en validación cruzada</span></div>
+          <div><b data-cuenta="0.917" data-dec="3">0</b><span>accuracy en test</span></div>
+          <div><b data-cuenta="0.83" data-dec="2">0</b><span>F1 en test</span></div>
+          <div><b data-cuenta="0.957" data-dec="3">0</b><span>precisión: cuando dice que rota, acierta</span></div>
+        </div>
+        <div class="modelos" id="modelos"></div>
+        <hr>
+        <p class="pie">Train 0,940 contra validación 0,918: <b>sin sobreajuste</b>. Los vendidos no entran al modelo, así no hay trampa.</p>
+      </div>
+      <div class="lado">
+        <div class="kpi rev"><div class="top"><b><span data-cuenta="7.1" data-dec="1">0</span> %</b><span class="pill">Métrica de negocio</span></div><p>del mercado tiene un precio dentro de ±10 % del promedio de su categoría. El resto está caro o barato sin saberlo.</p></div>
+        <div class="kpi rev"><div class="top"><b>×<span data-cuenta="2.2" data-dec="1">0</span></b><span class="pill">Rotación</span></div><p>Los productos más baratos que su categoría rotan más del doble que los caros: 33,6 % contra 15,1 %.</p></div>
+        <div class="kpi rev"><div class="top"><b><span data-cuenta="1102">0</span></b><span class="pill">Datos reales</span></div><p>publicaciones relevadas el 18/11/2026 en 4 búsquedas. Después de la limpieza quedan 1.077 productos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CALCULADORA ================= -->
+<section class="bloque" id="calculadora" style="padding-top:40px">
+  <div class="wrap">
+    <span class="tag rev" style="background:#E6DDFB;color:#5B3FC4"><i style="background:#5B3FC4"></i>Calculadora de impacto</span>
+    <h2 class="titulo rev">¿Cuánto te <em class="s">ahorrás?</em></h2>
+    <div class="calc rev">
+      <div>
+        <div class="campo"><label>Horas por semana relevando precios <span id="cH"></span></label><input type="range" id="calcH" min="1" max="40" value="12"></div>
+        <div class="campo"><label>Valor de una hora de tu equipo <span id="cV"></span></label><input type="range" id="calcV" min="2" max="20" step="0.1" value="4.3"></div>
+        <div class="campo"><label>Plan</label><div class="seg" id="calcPlan"><button data-p="30" class="on">Básico · US$ 30</button><button data-p="60">Pro · US$ 60</button></div></div>
+        <p class="supuestos">Valor por defecto: vendedor de comercio categoría A, convenio 130/75, noviembre 2026, $1.396.069 brutos sobre 200 horas al mes, a $1.630 por dólar. Sin cargas sociales.</p>
+      </div>
+      <div class="salida">
+        <span class="tag" style="background:#EFEAFF;color:#5B3FC4"><i style="background:#5B3FC4"></i>Ahorro neto por mes</span>
+        <div class="grande" style="margin-top:18px">US$ <span id="cNeto">0</span></div>
+        <div class="lineas">
+          <div><span>Horas que recuperás por mes</span><b id="cHoras">0</b></div>
+          <div><span>Valor de ese tiempo</span><b id="cValor">0</b></div>
+          <div><span>Cuota de Metis</span><b id="cCuota">0</b></div>
+          <div><span>Retorno sobre la cuota</span><b id="cROI">0</b></div>
+          <div style="border:0;padding:0"><span>Metis se paga en</span><b id="cDias">0</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="bloque" id="servicios" style="padding-top:40px">
+  <div class="wrap">
+    <span class="tag rev"><i></i>Qué incluye</span>
+    <h2 class="titulo rev">No es una plataforma más. <em class="s">Es tu equipo de datos.</em></h2>
+    <p class="bajada rev">Las plataformas te dan datos para que los analices vos. Nosotros te damos la decisión hecha y te acompañamos.</p>
+  </div>
+  <div class="abanico" id="abanico">
+    <div class="carta c1"><div class="stk" data-sticker="lupa"></div><h3>precios</h3><hr><ul><li>Distancia al promedio</li><li>Semáforo por categoría</li><li>Score costo-beneficio</li><li>Alertas de bajas</li></ul></div>
+    <div class="carta c2"><div class="stk" data-sticker="grafico"></div><h3>predicción</h3><hr><ul><li>Qué va a rotar</li><li>Aunque no lo vendas</li><li>Modelo validado</li><li>Para entrar a un rubro</li></ul></div>
+    <div class="carta c3"><div class="stk" data-sticker="rayo"></div><h3>reporte</h3><hr><ul><li>Llega cada semana</li><li>Directo a tu mail</li><li>Tablero interactivo</li><li>Sin tocar nada</li></ul></div>
+    <div class="carta c4"><div class="stk" data-sticker="carrito"></div><h3>promos</h3><hr><ul><li>Cuotas de la competencia</li><li>Envío gratis</li><li>Descuentos activos</li><li>Cuándo promocionar</li></ul></div>
+    <div class="carta c5"><div class="stk" data-sticker="estrella"></div><h3>acompañamiento</h3><hr><ul><li>Te explicamos los datos</li><li>En tu idioma</li><li>Reunión mensual (Pro)</li><li>Piloto de 30 días</li></ul></div>
+  </div>
+</section>
+
+<!-- ================= MULTIRRUBRO ================= -->
+<section class="bloque" id="rubros">
+  <div class="wrap">
+    <span class="tag rev" style="background:rgba(14,26,58,.1);color:var(--navy)"><i style="background:var(--navy)"></i>Multirrubro</span>
+    <h2 class="titulo rev">Hoy seguridad.<br>Mañana, <span class="tipeo" id="tipeo">herramientas</span><span class="cursor"></span></h2>
+    <div class="rub-grid">
+      <div class="rev"><b>Cambiás las búsquedas</b><p>Nos decís tu rubro y qué buscar. El actor general de Metis arma el análisis solo.</p></div>
+      <div class="rev"><b>Sin reentrenar</b><p>El modelo compara cada producto con su propia categoría, así sirve para cualquier rubro.</p></div>
+      <div class="rev"><b>Mismo reporte</b><p>Precio contra la categoría, oportunidades y predicción, con el EDA en PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLANES ================= -->
+<section class="bloque" id="planes">
+  <div class="wrap">
+    <span class="tag rev"><i></i>Planes</span>
+    <h2 class="titulo rev">Empezá <em class="s">sin riesgo.</em></h2>
+    <div class="planes">
+      <div class="plan rev"><span class="nom">Piloto</span><div class="pre">Gratis <small>30 días</small></div><ul><li>1 rubro</li><li>Reporte semanal</li><li>Medimos tu ahorro real</li></ul><a class="btn sec" href="#contacto">Pedir el piloto</a></div>
+      <div class="plan dest rev"><span class="badge">El más elegido</span><span class="nom">Básico</span><div class="pre">US$ 30 <small>por mes</small></div><ul><li>1 rubro</li><li>Reporte semanal por mail</li><li>Tablero interactivo</li><li>Oportunidades y predicción</li></ul><a class="btn prim" href="#contacto">Empezar</a></div>
+      <div class="plan rev"><span class="nom">Pro</span><div class="pre">US$ 60 <small>por mes</small></div><ul><li>Hasta 3 rubros</li><li>Reporte dos veces por semana</li><li>Reunión mensual con el equipo</li><li>Alertas de bajas de precio</li></ul><a class="btn sec" href="#contacto">Hablemos</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<footer id="contacto">
+  <div class="sticker" data-sticker="etiqueta" style="width:104px;right:4%;top:28px;transform:rotate(12deg)"></div>
+  <div class="wrap">
+    <span class="tag" style="background:rgba(242,140,40,.18);color:#FFC58C"><i></i>Piloto de 30 días</span>
+    <h2 class="titulo">¿Arrancamos <em class="s">esta semana?</em></h2>
+    <div class="cta-grid">
+      <form class="piloto" id="formPiloto">
+        <input name="nombre" placeholder="Tu nombre" required>
+        <input name="comercio" placeholder="Tu comercio" required>
+        <select name="rubro" required>
+          <option value="">¿Qué rubro querés analizar?</option>
+          <option>Seguridad para el hogar</option><option>Electrónica</option><option>Herramientas</option><option>Hogar y deco</option><option>Otro</option>
+        </select>
+        <input name="email" type="email" placeholder="Tu mail" required>
+        <button class="btn prim" type="submit" style="justify-content:center">Quiero mi piloto <span class="flecha">→</span></button>
+        <div class="gracias" id="gracias">¡Listo! Se abrió tu correo con el pedido. Te respondemos en menos de 48 horas.</div>
+      </form>
+      <div class="equipo">
+        <h4>El equipo</h4>
+        <div class="miembro"><div class="av" style="background:var(--naranja)">RS</div><div><b>Ramiro Spandrio</b><span>Business · líder del equipo</span></div></div>
+        <div class="miembro"><div class="av" style="background:var(--cielo)">HG</div><div><b>Helen Garcia</b><span>Solution Engineer</span></div></div>
+        <div class="miembro"><div class="av" style="background:var(--lima)">YJ</div><div><b>Yamila Jordan</b><span>Data Scientist</span></div></div>
+        <a class="btn sec" style="color:var(--crema);margin-top:8px;justify-content:center" href="https://github.com/spandrio/metis-capstone" target="_blank" rel="noopener">Ver el código en GitHub</a>
+      </div>
+    </div>
+    <div class="pie-final"><span>Metis Analytics · Capstone Project · Samsung Innovation Campus 2026 · Comisión 1</span><span>Datos de Mercado Libre Argentina relevados el 18/11/2026</span></div>
+  </div>
+</footer>
+
+<div class="tip" id="tip"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/datos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
