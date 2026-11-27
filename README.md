@@ -1,4 +1,6 @@
-# Metis · Inteligencia competitiva en Mercado Libre
+<img src="branding/logo.png" alt="Metis Analytics" width="380">
+
+# Metis Analytics · Inteligencia competitiva en Mercado Libre
 
 Scraping, procesamiento y predicción de productos de **seguridad electrónica** en Mercado Libre Argentina para decidir **qué vender, a qué precio y cuándo promocionar**. El mismo flujo se puede aplicar a cualquier rubro.
 
@@ -73,6 +75,7 @@ metis-capstone/
 ├── dashboard/                    # Dashboard en Streamlit
 ├── demo_local/                   # Demo local en Streamlit con los dos actores
 ├── docs/                         # diagrama, captura de Make, reporte EDA de ejemplo
+├── branding/                     # Logo, paleta y fondos de Zoom de Metis Analytics
 ├── web/                          # Sitio Metis Analytics (GitHub Pages)
 └── README.md
 ```
@@ -191,6 +194,7 @@ Seguimos mejorando el proyecto después del 24/11:
 
 | Fecha | Mejora |
 |---|---|
+| 27/11/2026 | **Identidad de Metis Analytics** (`branding/`): logo en SVG y PNG, ícono, paleta y fondos de Zoom con los colores del sitio. El sitio suma vista previa para compartir el link |
 | 27/11/2026 | **Repositorio ordenado**: se borró la carpeta `metis-capstone/` de la primera subida, que duplicaba código viejo. Sigue disponible en el historial de commits |
 | 27/11/2026 | **Actor general más modular**: la lectura de datos pasó a `fuentes.py`, así `main.py` solo maneja el actor. En el EDA se reemplazaron los bucles anidados por `np.ndenumerate` y `bar_label` |
 | 27/11/2026 | **Sitio web Metis Analytics** (`web/`): demo interactiva con los datos reales. Incluye un chequeo de precio contra la categoría, el modelo general corriendo en el navegador con predicciones idénticas a scikit-learn, oportunidades, mapa del mercado y calculadora de ahorro |
