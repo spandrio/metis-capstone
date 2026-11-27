@@ -62,7 +62,7 @@ metis-capstone/
 │   ├── Dockerfile
 │   └── requirements.txt
 ├── actor_general/                # Versión multirrubro del actor (cualquier rubro)
-│   ├── src/                      #   main.py, metis_core.py (ETL), eda.py (EDA en PDF)
+│   ├── src/                      #   main.py (actor), fuentes.py (lectura de datos), metis_core.py (ETL), eda.py (EDA en PDF)
 │   ├── model/modelo_general.pickle
 │   └── entrenamiento/            #   script de entrenamiento del modelo general
 ├── colabs/
@@ -189,9 +189,9 @@ Seguimos mejorando el proyecto después del 24/11:
 
 | Fecha | Mejora |
 |---|---|
+| 27/11/2026 | **Actor general más modular**: la lectura de datos pasó a `fuentes.py`, así `main.py` solo maneja el actor. En el EDA se reemplazaron los bucles anidados por `np.ndenumerate` y `bar_label` |
 | 27/11/2026 | **Sitio web Metis Analytics** (`web/`): demo interactiva con los datos reales. Incluye un chequeo de precio contra la categoría, el modelo general corriendo en el navegador con predicciones idénticas a scikit-learn, oportunidades, mapa del mercado y calculadora de ahorro |
 | 24/11/2026 | **Demo local** (`demo_local/`): corre los dos actores con el mismo código del repo desde una página en Streamlit |
 | 24/11/2026 | **Actor general en Apify**: input schema validado y salida sin valores NaN en el dataset, en los dos actores |
 | 24/11/2026 | **Presentación final** con el caso de la clienta y la versión multirrubro |
 
-**Próximas:** pasar la lectura de datos del `main.py` del actor general a un módulo aparte y reemplazar dos bucles anidados del EDA.
