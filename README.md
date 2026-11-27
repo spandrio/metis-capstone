@@ -71,7 +71,9 @@ metis-capstone/
 │   ├── raw/                      # 4 CSV crudos del scraper (18/11/2026)
 │   └── processed/                # dataset limpio (1.077 productos)
 ├── dashboard/                    # Dashboard en Streamlit
+├── demo_local/                   # Demo local en Streamlit con los dos actores
 ├── docs/                         # diagrama, captura de Make, reporte EDA de ejemplo
+├── web/                          # Sitio Metis Analytics (GitHub Pages)
 └── README.md
 ```
 
@@ -189,6 +191,7 @@ Seguimos mejorando el proyecto después del 24/11:
 
 | Fecha | Mejora |
 |---|---|
+| 27/11/2026 | **Repositorio ordenado**: se borró la carpeta `metis-capstone/` de la primera subida, que duplicaba código viejo. Sigue disponible en el historial de commits |
 | 27/11/2026 | **Actor general más modular**: la lectura de datos pasó a `fuentes.py`, así `main.py` solo maneja el actor. En el EDA se reemplazaron los bucles anidados por `np.ndenumerate` y `bar_label` |
 | 27/11/2026 | **Sitio web Metis Analytics** (`web/`): demo interactiva con los datos reales. Incluye un chequeo de precio contra la categoría, el modelo general corriendo en el navegador con predicciones idénticas a scikit-learn, oportunidades, mapa del mercado y calculadora de ahorro |
 | 24/11/2026 | **Demo local** (`demo_local/`): corre los dos actores con el mismo código del repo desde una página en Streamlit |
