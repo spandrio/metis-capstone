@@ -4,6 +4,8 @@ Scraping, procesamiento y predicción de productos de **seguridad electrónica**
 
 **Capstone Project · Samsung Innovation Campus 2026 · Comisión 1**
 
+**Sitio web con demo interactiva:** https://spandrio.github.io/metis-capstone/web/
+
 | Integrante | Rol | Aporte principal |
 |---|---|---|
 | Ramiro Spandrio | Business (líder del equipo) | Problema de negocio, métricas, dashboard, precio, presentación y la versión multirrubro (actor y modelo general) |
@@ -148,7 +150,7 @@ Comparamos 6 modelos de scikit-learn sobre la misma partición (validación cruz
 
 **Score de costo-beneficio (0 a 100):** es un dato más del análisis competitivo, no la métrica de negocio. Pondera precio relativo a la categoría (35 %), rating (30 %), cantidad de reseñas (20 %) y promociones: cuotas sin interés y envío gratis (15 %). Un producto con 65 o más se marca como competitivo (50,1 % del mercado).
 
-**Métrica del modelo:** accuracy en test **0,917** y F1 **0,83**.
+**Métrica del modelo:** accuracy en validación cruzada **0,918** (5 folds), accuracy en test **0,917** y F1 **0,83**.
 
 ---
 
@@ -178,3 +180,18 @@ Comparamos 6 modelos de scikit-learn sobre la misma partición (validación cruz
 ## Versión multirrubro
 
 Como nos sugirieron, el mismo enfoque sirve para cualquier rubro. `actor_general/` recibe el nombre del rubro y sus búsquedas, o un CSV crudo, y usa variables relativas a cada categoría: el precio contra la mediana de su categoría y las reseñas contra las de su categoría. Así el mismo modelo se puede aplicar sin reentrenar. Además del CSV con las predicciones, genera el EDA en PDF (`docs/eda_reporte_actor_general.pdf`) y el dataset limpio.
+
+---
+
+## Mejoras después de la presentación final
+
+Seguimos mejorando el proyecto después del 24/11:
+
+| Fecha | Mejora |
+|---|---|
+| 27/11/2026 | **Sitio web Metis Analytics** (`web/`): demo interactiva con los datos reales. Incluye un chequeo de precio contra la categoría, el modelo general corriendo en el navegador con predicciones idénticas a scikit-learn, oportunidades, mapa del mercado y calculadora de ahorro |
+| 24/11/2026 | **Demo local** (`demo_local/`): corre los dos actores con el mismo código del repo desde una página en Streamlit |
+| 24/11/2026 | **Actor general en Apify**: input schema validado y salida sin valores NaN en el dataset, en los dos actores |
+| 24/11/2026 | **Presentación final** con el caso de la clienta y la versión multirrubro |
+
+**Próximas:** pasar la lectura de datos del `main.py` del actor general a un módulo aparte y reemplazar dos bucles anidados del EDA.
