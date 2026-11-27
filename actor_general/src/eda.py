@@ -117,8 +117,7 @@ def eda_pdf(df: pd.DataFrame, resumen: dict, target: str = "vende_mucho") -> byt
             ax = fig.add_subplot(pos)
             s = serie.sort_values()
             ax.barh([str(i)[:28] for i in s.index], s.values, color=AZUL)
-            for i, v in enumerate(s.values):
-                ax.text(v, i, f" {v}", va="center", fontsize=9, color=TINTA)
+            ax.bar_label(ax.containers[0], labels=[f" {v}" for v in s.values], fontsize=9, color=TINTA)
             ax.set_title(titulo, loc="left"); ax.grid(axis="y", visible=False)
         pdf.savefig(fig); plt.close(fig)
 
@@ -131,9 +130,8 @@ def eda_pdf(df: pd.DataFrame, resumen: dict, target: str = "vende_mucho") -> byt
         ax.imshow(corr, cmap=LinearSegmentedColormap.from_list("bo", [NARANJA, "#FFFFFF", AZUL]), vmin=-1, vmax=1)
         ax.set_xticks(range(len(cols))); ax.set_xticklabels(cols, rotation=60, ha="right", fontsize=8)
         ax.set_yticks(range(len(cols))); ax.set_yticklabels(cols, fontsize=8); ax.grid(False)
-        for i in range(len(cols)):
-            for j in range(len(cols)):
-                ax.text(j, i, _fmt(corr.iloc[i, j], 2), ha="center", va="center", fontsize=6.5, color=TINTA)
+        for (i, j), v in np.ndenumerate(corr.to_numpy()):
+            ax.text(j, i, _fmt(v, 2), ha="center", va="center", fontsize=6.5, color=TINTA)
         ax.set_title("Matriz de correlación (Pearson)", loc="left")
         ax = fig.add_subplot(gs[0, 1]); ax.axis("off")
         ax.set_title("Selección de 10 features (5 lineales y 5 no lineales)", loc="left")
@@ -152,8 +150,7 @@ def eda_pdf(df: pd.DataFrame, resumen: dict, target: str = "vende_mucho") -> byt
         v1 = [b[k]["pct_publicaciones"] for k, _ in orden]; v2 = [b[k]["pct_alta_rotacion"] for k, _ in orden]
         for vals, off, col, lab in [(v1, -w / 2, GRIS, "% de publicaciones"), (v2, w / 2, AZUL, "% con alta rotación")]:
             bars = ax.bar(x + off, vals, w, color=col, label=lab)
-            for r in bars:
-                ax.text(r.get_x() + r.get_width() / 2, r.get_height() + 1, _fmt(r.get_height(), 1) + " %", ha="center", fontsize=9, color=TINTA)
+            ax.bar_label(bars, labels=[_fmt(v, 1) + " %" for v in vals], padding=3, fontsize=9, color=TINTA)
         ax.set_xticks(x); ax.set_xticklabels([t for _, t in orden]); ax.legend(frameon=False)
         ax.set_ylim(0, max(v1 + v2) + 12)
         ax.set_title("Métrica de negocio: distancia al precio promedio", loc="left")
